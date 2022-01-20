@@ -13,21 +13,22 @@ namespace Module_4HW3.ServerSettings
         public string ServerPath { get; set; }
         public void SerializePath(Path objects)
         {
-            using (FileStream fs = new FileStream("config.json", FileMode.OpenOrCreate))
+            using (FileStream fs = new FileStream("configs.json", FileMode.OpenOrCreate))
             {
 
                 JsonSerializer.SerializeAsync<Path>(fs, objects);
             }
         }
-        public async Task<string> GetPathAsync(string path)
+        public async Task<string> GetPath(string path)
         {
-            Path restoredPerson=new Path();
+            Path restoredPerson = new Path();
             using (FileStream fs = new FileStream(path, FileMode.OpenOrCreate))
             {
                 restoredPerson = await JsonSerializer.DeserializeAsync<Path>(fs);
             }
-            
-            return  restoredPerson.ServerPath.ToString();
-        }
+
+            return restoredPerson.ServerPath.ToString();
+        } 
+        
     }
 }
