@@ -15,8 +15,6 @@ namespace Module_4HW3
         {
            
             var path = new ServerSettings.Path() { ServerPath = "Server=DESKTOP-3OAE4IJ\\SQLEXPRESS;Database=Module4_hw_3;Trusted_Connection=True;" };
-            path.SerializePath(path);
-            Console.WriteLine(path.ServerPath);
             string a = await path.GetPath("configs.json");
         
             var optionBuilde = new DbContextOptionsBuilder<ApplicationContext>();
